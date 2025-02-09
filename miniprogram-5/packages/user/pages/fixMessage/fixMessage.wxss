@@ -1,0 +1,45 @@
+/* pages/user/fixMessage/fixMessage.wxss */
+.row {
+    display: flex;
+    align-items: center;
+    padding: 30rpx 20rpx;
+    font-size: 30rpx;
+    font-weight: inherit;
+    background-color: snow;
+    border-bottom: 1rpx solid #dbf2fb;
+  }
+
+.text {
+    margin-left: 15rpx;
+    color: #636262;
+  }
+
+.img{
+    width: 60rpx;
+    height: 60rpx;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.left {
+    margin: 0 0 0 20rpx;
+    width: 30%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+  
+.right {
+    width: 70%;
+    margin: 0 40rpx 0 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
+    color: rgb(148, 147, 147);
+  }
+
+.icon-small{
+    width: 40rpx;
+    height: 40rpx;
+  }

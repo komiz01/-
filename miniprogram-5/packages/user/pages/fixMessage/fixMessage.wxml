@@ -1,0 +1,37 @@
+<!--pages/user/fixMessage/fixMessage.wxml-->
+<view>
+<!--头像-->
+    <button open-type="chooseAvatar" class="row" style="width: 100%;" bind:chooseavatar="onChooseAvatar" >
+      <view class="left">
+        <text class="text">头像</text>
+      </view>
+      <view class="right">
+        <image src="{{userInfo.avatar}}" class="img" mode="aspectFill"/>
+        <image src="/pages/icon/right.png" class="icon-small" mode="aspectFill"/>
+      </view>
+    </button>
+<!--昵称-->
+    <view class="row" style="width: 100%;" >
+      <view class="left">
+        <text class="text">昵称</text>
+      </view>
+      <view class="right">
+        <input type="nickname" placeholder="{{userInfo.nickname}}" bind:blur="onInputChange" />
+        <image src="/pages/icon/right.png" class="icon-small" mode="aspectFill"/>
+      </view>
+    </view>
+<!--个性签名-->
+    <view class="row" style="width: 100%;" >
+      <view class="left">
+        <text class="text">个性签名</text>
+      </view>
+      <view class="right">
+        <input type="text" placeholder="{{userInfo.motto}}" bind:blur="onInputChangeMotto" />
+        <image src="/pages/icon/right.png" class="icon-small" mode="aspectFill"/>
+      </view>
+    </view>
+
+
+
+
+</view>

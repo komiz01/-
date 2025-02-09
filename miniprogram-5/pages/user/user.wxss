@@ -1,0 +1,85 @@
+/* pages/user/user.wxss */
+page{
+  background-color: #f1f1f1;
+}
+
+/*头像资料*/
+.top-bg{
+  background-image: linear-gradient(to bottom, #9dc2de, #b2c8da
+	,#f1f1f1);
+    height: 250rpx;
+    padding: 20rpx;
+    display: flex;
+}
+
+.row-left{
+    width: 20%;
+    padding: 50rpx 30rpx;
+    align-items: center;
+}
+
+.row-img{
+    width: 140rpx;
+    height: 140rpx;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.row-right{
+    padding: 5% 0;
+    width: 80%;
+    line-height: 45rpx;
+    color: snow;
+}
+
+.nName{
+    margin: 5% 0;
+    width: 100%;
+    font-size: 40rpx;
+    line-height: 45rpx;
+    color: snow;
+    font-weight: bold;
+}
+
+.content{
+    margin: 5% 0;
+    width: 100%;
+    font-size: 30rpx;
+    line-height: 45rpx;
+    color: snow;
+}
+
+/*第二部分*/
+.row {
+    display: flex;
+    align-items: center;
+    padding: 30rpx 20rpx;
+    font-size: 30rpx;
+    font-weight: inherit;
+    background-color: snow;
+    border-bottom: 1rpx solid #dbf2fb;
+  }
+
+.text {
+    margin-left: 15rpx;
+    color: #636262;
+  }
+
+.left {
+    margin: 0 0 0 20rpx;
+    width: 90%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+  
+.right {
+    width: 10%;
+    text-align: right;
+    color: gray;
+  }
+
+.icon-small{
+    width: 40rpx;
+    height: 40rpx;
+  }

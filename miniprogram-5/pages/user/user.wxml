@@ -1,0 +1,66 @@
+<!--pages/user/user.wxml-->
+<!--头像-->
+<view class="top-bg" bind:tap="onTap">
+    <view class="row-left">
+        <image src="{{userInfo.avatar}}" class="row-img" mode="aspectFill"></image>
+    </view>
+    <view class="row-right">
+        <view class="nName">{{userInfo.nickname}}</view>
+        <view class="content">{{userInfo.motto}}</view>
+    </view>
+</view>
+<!--列表-->
+<view>
+    <button class="row" style="width: 100%;" bindtap="">
+      <view class="left">
+        <image src="../../icon/帐户.png" class="icon-small" mode="aspectFill"/>
+        <text class="text">个人资料</text>
+      </view>
+      <view class="right">
+        <image src="../../icon/right.png" class="icon-small" mode="aspectFill"/>
+      </view>
+    </button>
+    <button class="row" style="width: 100%;" bindtap="">
+      <view class="left">
+        <image src="../../icon/爱心.png" class="icon-small" mode="aspectFill"/>
+        <text class="text">收藏</text>
+      </view>
+      <view class="right">
+        <image src="../../icon/right.png" class="icon-small" mode="aspectFill"/>
+      </view>
+    </button>    <button class="row" style="width: 100%;" bindtap="">
+      <view class="left">
+        <image src="../../icon/编辑撰写.png" class="icon-small" mode="aspectFill"/>
+        <text class="text">我的文章</text>
+      </view>
+      <view class="right">
+        <image src="../../icon/right.png" class="icon-small" mode="aspectFill"/>
+      </view>
+    </button>    <button class="row" style="width: 100%;" bindtap="">
+      <view class="left">
+        <image src="../../icon/地球仪.png" class="icon-small" mode="aspectFill"/>
+        <text class="text">个人足迹</text>
+      </view>
+      <view class="right">
+        <image src="../../icon/right.png" class="icon-small" mode="aspectFill"/>
+      </view>
+    </button>
+    <button class="row" style="width: 100%;" bindtap="">
+      <view class="left">
+        <image src="../../icon/齿轮.png" class="icon-small" mode="aspectFill"/>
+        <text class="text">设置</text>
+      </view>
+      <view class="right">
+        <image src="../../icon/right.png" class="icon-small" mode="aspectFill"/>
+      </view>
+    </button>
+    <button class="row" style="width: 100%; border-bottom: none" bindtap="">
+      <view class="left">
+        <image src="../../icon/锁.png" class="icon-small" mode="aspectFill"/>
+        <text class="text">退出登录</text>
+      </view>
+      <view class="right">
+        <image src="../../icon/right.png" class="icon-small" mode="aspectFill"/>
+      </view>
+    </button>
+</view>

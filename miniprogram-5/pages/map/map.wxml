@@ -1,0 +1,63 @@
+<!--pages/map/map.wxml-->
+<!--地图容器-->
+<view class="container">  
+  <map  
+    class="map"
+    id="map"  
+    longitude="{{longitude}}"  
+    latitude="{{latitude}}"  
+    scale="16"  
+    markers="{{markers}}"  
+    show-location   
+  >  
+  </map>  
+  <view class="draggable-container" style="top: {{dragPosition}}px" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+    <view class="drag-indicator" ></view>
+      <!--搜索-->
+	  <view class="level search-box">
+		  <view class="level col-2">
+			  <icon class="icon-small" type="search" size="20"></icon>
+			  <input placeholder="请输入目的地" class="input-text" />
+      </view>
+    </view>
+      <!-- 菜单 -->
+    <view class="level tab-box">
+        <block class="col">
+            <navigator wx:for="{{tabList}}" wx:key="id" url="{{item.url}}?id={{item.id}}&title={{item.title}}" class="tab-list">
+              <image class="tab-img" src="{{item.src}}" mode="widthFix"></image>
+              <text class="tab-text">{{item.title}}</text>
+            </navigator>
+        </block>
+    </view>
+    <!-- 特征 -->
+    <view class="level ch-box">
+      <view class="row">
+        <view class="row1">
+          <image class="icon-small" src="../../icon/086_表情.png" mode="aspectFill"/>
+          <text class="text">心情指数</text>
+          <text class="text">80%</text>
+        </view>
+        <view class="row1">
+          <image class="icon-small" src="../../icon/086_定位.png" mode="aspectFill"/>
+          <text class="text">目的地</text>
+          <text class="text"></text>
+        </view>
+      </view>
+    
+    </view>
+    <!-- 推荐 -->
+    <view class="rec-box">
+      <view class="level">
+        <view class="line"></view>
+        <view class="title">个性推荐</view>
+      </view>
+      <view class="rec">
+        <text class="text1"></text>
+      </view>
+
+    </view>
+    
+
+  </view>
+
+</view>
