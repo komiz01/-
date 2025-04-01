@@ -2,20 +2,26 @@
   "pages": [
     "pages/home/home",
     "pages/map/map",
-    "pages/user/user"
-    
+    "pages/user/user",
+    "pages/article/article"
   ],
   "subpackages": [
     {
       "root": "packages/home",
       "pages": [
-        "pages/share/share"
+        "pages/share/share",
+        "pages/articleDetail/articleDetail"
       ]
     },
     {
       "root": "packages/user",
       "pages": [
-        "pages/fixMessage/fixMessage"
+        "pages/fixMessage/fixMessage",
+        "pages/personalData/personalData",
+        "pages/myArticle/myArticle",
+        "pages/favoriteList/favoriteList",
+        "pages/myArticle/myDetail/myDetail",
+        "pages/myArticle/myDetail/editArcitle/editArticle"
       ]
     }
   ],
@@ -25,9 +31,8 @@
     "navigationBarBackgroundColor": "#9dc2de",
     "enablePullDownRefresh": true,
     "backgroundColor": "#efefef",
-    "backgroundTextStyle":"dark"
+    "backgroundTextStyle": "dark"
   },
-
   "tabBar": {
     "list": [
       {
@@ -50,9 +55,7 @@
       }
     ]
   },
-
   "plugins": {
-
     "chooseLocation": {
       "version": "1.0.10",
       "provider": "wx76a9a06e5b4e693e"
@@ -67,5 +70,4 @@
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"
-  
 }

@@ -1,13 +1,11 @@
-// packages/home/pages/share/share.js
+// packages/user/pages/myArticle/myArticle.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    articles: [
-      
-    ],
+    myArticles:[],
     test:[
       {
         id: 1,
@@ -23,27 +21,28 @@ Page({
           'https://tse4-mm.cn.bing.net/th/id/OIP-C.1X-3DSfzdN5DFboMQx2oRgHaHa?rs=1&pid=ImgDetMain',
         ]
       }
-    ]
-
+    ],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    // 模拟从后端获取文章列表的数据请求
+    this.getMyArticles();
+  },
+
+  getMyArticles: function(){
+    // 获取用户发布的文章列表
     wx.request({
-      url: 'http://api.leonandor.com:8081/travel/post/page/list', // 获取文章列表的API地址
+      url: 'http://api.leonandor.com:8081/travel/post/page/list', // 替换为你的API地址
       method: 'GET',
-      success: res => {
-        // 假设返回的数据结构与预期一致
-        this.setData({ articles: res.data });
+      header:{
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer' + wx.getStorageSync('token') // 从本地存储中读取token
       },
-      fail: err => {
-        console.error('获取文章列表失败', err);
-        wx.showToast({
-          title: '加载文章失败',
-          icon: 'none'
+      success: res => {
+        this.setData({
+          myArticles: res.data
         });
       }
     });
@@ -52,7 +51,7 @@ Page({
   toDetail(e) {
     const articleId = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: `/pages/articleDetail/articleDetail?id=${articleId}`
+      url: `/packages/home/pages/myArticle/myDetail/myDetail?id=${articleId}`
     });
   },
 
@@ -67,10 +66,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    // ------------------采用本地存储时
-    // // 每次进入页面时从本地存储加载数据
-    // const articles = wx.getStorageSync('articles') || [];
-    // this.setData({ articles });
+
   },
 
   /**

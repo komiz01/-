@@ -1,5 +1,4 @@
-/* packages/home/pages/share/share.wxss */
-
+/* packages/user/pages/favoriteList/favoriteList.wxss */
 .cards-container {
     padding: 20px;
   }

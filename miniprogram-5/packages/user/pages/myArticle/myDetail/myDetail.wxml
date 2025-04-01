@@ -1,0 +1,30 @@
+<!--packages/user/pages/myArticle/myDetail/myDetail.wxml-->
+<view class="article-detail">
+  <view class="header">
+    <image src="{{article.avatarUrl}}" mode="aspectFill" class="avatar"></image>
+    <view style="display: grid;">
+        <text class="author-name">{{article.nickname}}</text>
+        <text class="publish-time">{{article.time}}</text>
+    </view>
+    <view bindtap="showOptions" class="collect-button">
+      <text style="color: #a1c8df;font-size: 50rpx;font-weight: bolder;">...</text>
+    </view>
+  </view>
+
+  <view class="title">
+    {{article.title}}
+  </view>
+
+  <view class="content">
+    {{article.content}}
+  </view>
+
+
+
+  <!-- 9宫格 -->
+  <view class="gallery">
+    <block wx:for="{{article.ImageUrlList}}" wx:key="item">
+      <image src="{{item}}" mode="aspectFit" class="gallery-imagepp" bindtap="previewImage"></image>
+    </block>
+  </view>
+</view>

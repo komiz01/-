@@ -1,0 +1,55 @@
+<!--packages/home/pages/articleDetail/articleDetail.wxml-->
+<view class="article-detail">
+  <view class="header">
+    <image src="{{article.avatarUrl}}" mode="aspectFill" class="avatar"></image>
+    <view style="display: grid;">
+        <text class="author-name">{{article.nickname}}</text>
+        <text class="publish-time">{{article.time}}</text>
+    </view>
+    <button bindtap="toggleCollect" class="collect-button">
+      <image src="{{isCollected ? '../../../../icon/star-fill.png' : '../../../../icon/star.png'}}" mode="contain" class="collect-icon"></image>
+    </button>
+  </view>
+
+  <view class="title">
+    {{article.title}}
+  </view>
+
+  <view class="content">
+    {{article.content}}
+  </view>
+
+  <view class="gallery">
+    <block wx:for="{{article.ImageUrlList}}" wx:key="item">
+      <image src="{{item}}" mode="aspectFit" class="gallery-imagepp" bindtap="previewImage"></image>
+    </block>
+  </view>
+</view>
+
+<!-- 效果展示 -->
+<!-- <view class="article-detail">
+  <view class="header">
+    <image src="{{test.avatarUrl}}" mode="aspectFill" class="avatar"></image>
+    <view style="display: grid;">
+        <text class="author-name">{{test.nickname}}</text>
+        <text class="publish-time">{{test.time}}</text>
+    </view>
+    <button bindtap="toggleCollect" class="collect-button">
+      <image src="{{isCollected ? '../../../../icon/star-fill.png' : '../../../../icon/star.png'}}" mode="contain" class="collect-icon"></image>
+    </button>
+  </view>
+
+  <view class="title">
+    {{test.title}}
+  </view>
+
+  <view class="content">
+    {{test.content}}
+  </view>
+
+  <view class="gallery">
+    <block wx:for="{{test.ImageUrlList}}" wx:key="item">
+      <image src="{{item}}" mode="aspectFit" class="gallery-imagepp" bindtap="previewImage"></image>
+    </block>
+  </view>
+</view> -->

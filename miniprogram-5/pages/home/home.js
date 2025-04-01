@@ -10,7 +10,7 @@ Page({
 					id: '1',
 							title: '旅游分享',
 							src:'../../icon/笨游黄页.png',
-							url:''
+							url:'../../packages/home/pages/share/share'
 					},
 					{
 						id: '2',
@@ -43,7 +43,7 @@ Page({
 					},
 			]
 	},
-
+	
 
 	// 滑动监听
 	moduleSelect(e){

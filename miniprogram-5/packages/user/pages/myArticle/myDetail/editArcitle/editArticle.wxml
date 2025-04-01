@@ -1,0 +1,38 @@
+<!--packages/user/pages/myArticle/myDetail/editArcitle/editArticle.wxml-->
+<view class="article-detail">
+  <view class="header">
+    <image src="{{article.avatarUrl}}" mode="aspectFill" class="avatar"></image>
+    <view style="display: grid;">
+        <text class="author-name">{{article.nickname}}</text>
+        <text class="publish-time">{{article.time}}</text>
+    </view>
+    <view bindtap="saveArticle" class="collect-button">
+      <text style="color: #a1c8df;font-size: 30rpx;font-weight: bolder;">
+        <text>保存</text>
+      </text>
+    </view>
+  </view>
+
+  <view class="title">
+    <textarea value="{{article.title}}" bindinput="onTitleInput"></textarea>
+  </view>
+
+  <view class="content">
+    <textarea maxlength="450" value="{{article.content}}" bindinput="onContentInput" style="width: 370px;height: 250px;"></textarea>
+  </view>
+
+  <scroll-view scroll-x="true" class="image-gallery">
+    <block>
+      <image src="../../../../../../icon/add.png" mode="aspectFit" bindtap="chooseImage" class="gallery-image" style="background-color: #b9b9b9;"/>
+    </block>
+    <block wx:for="{{article.ImageUrlList}}" wx:key="index">
+      <view class="image-wrapper">
+        <image src="{{item}}" mode="aspectFit"  class="gallery-image"></image>
+        <icon type="clear" size="20" color="grey" catchtap='removeImage' data-img='{{item}}'/>
+      </view>
+    </block>
+  </scroll-view>
+
+  
+
+</view>

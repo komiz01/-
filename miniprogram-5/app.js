@@ -10,9 +10,39 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        if (res.code) {
+          // 发起网络请求，将code发送到你的服务器
+          wx.request({
+            url: 'http://api.leonandor.com:8081/travel/login', // 替换成你的服务器地址
+            method: 'POST',
+            header: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data: {
+              code: res.code
+            },
+            success: loginRes => {
+              console.log('登录成功', loginRes);
+              if (loginRes.data && loginRes.data.token) {
+                const token = loginRes.data.token;
+                // 保存 token 到本地存储
+                wx.setStorageSync('token', token);
+                console.log('Token 已保存:', token);
+              } else {
+                console.error('登录成功但未获取到 token');
+              }
+            },
+            fail: err => {
+              console.error('登录失败', err);
+            }
+          });
+        } else {
+          console.error('登录失败！' + res.errMsg);
+        }
       }
-    })
+    });
   },
+
   globalData: {
     userInfo: {
       avatar:'https://img0.baidu.com/it/u=3204281136,1911957924&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500',

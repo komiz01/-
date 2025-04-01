@@ -12,8 +12,9 @@ Page({
     longitude: 116.633490,  
     markers: [],  
     
-    dragPosition: 600, // 拖动窗口的初始位置
+    dragPosition: 0, // 拖动窗口的初始位置
     startY: 0 ,// 触摸开始时的Y坐标
+    initialDragPosition: 0, // 记录拖动开始时的初始位置+
 
     tabList: [
       {
@@ -75,11 +76,12 @@ Page({
     const systemInfo = wx.getSystemInfoSync();
     const windowHeight = systemInfo.windowHeight; // 获取当前设备的窗口高度
     this.setData({
-    dragPosition: windowHeight - 50 // 让窗口初始位置在距离底部100px的位置
+    dragPosition: windowHeight - 100, // 让窗口初始位置在距离底部100px的位置
+    initialDragPosition: windowHeight - 100 // 初始化初始位置+
   });
     
   },  
-//-------------------------------- 
+//--------------------------------获取位置 
   getLocation: function () {  
     const that = this;  
     wx.getLocation({  
@@ -112,24 +114,59 @@ Page({
 
 touchStart(e) {
   this.setData({
-    startY: e.touches[0].clientY
+    startY: e.touches[0].clientY,
+    initialDragPosition: this.data.dragPosition // 更新初始拖动位置+
   });
 },
 
 touchMove(e) {
-  const deltaY =  this.data.startY -e.touches[0].clientY ;
-  // 更新拖动窗体的位置
+  const moveY = e.touches[0].clientY;
+  const deltaY = this.data.startY - moveY;
+
+   // 如果尝试向下拖动并且窗口已经在顶部，则不允许继续向下拖动以避免触发下拉刷新
+  if (deltaY > 0 && this.data.initialDragPosition <= 0) {
+      return;
+  }
+
+    // 计算新的位置，并确保它在有效范围内
+  let newDragPosition = this.data.initialDragPosition - deltaY;
+  newDragPosition = Math.max(0, Math.min(newDragPosition, /* 这里设置最大拖动边界，例如windowHeight-窗口自身高度 */));
+
   this.setData({
-    dragPosition: Math.max(0, this.data.dragPosition - deltaY) // 限制最小值为0
+      dragPosition: newDragPosition,
+      initialDragPosition: newDragPosition // 更新初始拖动位置，以便连续拖动+
   });
-  // 更新起始Y坐标为当前Y坐标
-  this.setData({
-    startY: e.touches[0].clientY
-  });
+  // const deltaY =  this.data.startY -e.touches[0].clientY ;
+  // // 更新拖动窗体的位置
+  // this.setData({
+  //   dragPosition: Math.max(0, this.data.dragPosition - deltaY) // 限制最小值为0
+  // });
+  // // 更新起始Y坐标为当前Y坐标
+  // this.setData({
+  //   startY: e.touches[0].clientY
+  // });
 },
 
 touchEnd() {
   // 在此可以处理释放后的逻辑，例如增加弹性效果
+  const windowHeight = wx.getSystemInfoSync().windowHeight;
+  const fixedPositions = [0, windowHeight - 100]; // 示例：顶部和距离底部100px处
+
+  let closestPosition = fixedPositions[0];
+  let minDistance = Math.abs(this.data.dragPosition - closestPosition);
+
+  for (let i = 1; i < fixedPositions.length; i++) {
+      const distance = Math.abs(this.data.dragPosition - fixedPositions[i]);
+      if (distance < minDistance) {
+          minDistance = distance;
+          closestPosition = fixedPositions[i];
+      }
+    }
+
+    // 使用动画平滑过渡到最近的位置
+  this.setData({
+      dragPosition: closestPosition
+  });
 }
 
 });

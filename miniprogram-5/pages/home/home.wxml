@@ -72,6 +72,6 @@
   </view>
 </view>
 <!--编写按钮-->
-<view class="btn">
+<navigator class="btn" url="../article/article" >
   <image src="../../icon/Pencil.png" mode="aspectFill" class="btn-img"/>
-</view>
+</navigator>

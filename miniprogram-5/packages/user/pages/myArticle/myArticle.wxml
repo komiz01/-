@@ -1,10 +1,8 @@
-<!--packages/home/pages/share/share.wxml旅游分享页面（文章列表）-->
-<navigator url="../articleDetail/articleDetail">
-    跳转
-</navigator>
+<!--packages/user/pages/myArticle/myArticle.wxml我的文章-->
 <view style="background-color: #9dc2de; height: 100%;">
+    <navigator url="./myDetail/myDetail">test</navigator>
     <view class="cards-container">
-        <block wx:for="{{articles}}" wx:key="id">
+        <block wx:for="{{myArticles}}" wx:key="id">
             <view class="card-container" bindtap="toDetail" data-id="{{item.id}}">
                 <view class="card-header">
                     <image class="avatar" src="{{item.avatarUrl}}"></image>
@@ -27,6 +25,7 @@
             </view>
         </block>
     </view>
+
     <!-- 卡片效果展示 -->
     <view class="cards-container">
         <block wx:for="{{test}}" wx:key="id">
@@ -53,4 +52,5 @@
             </view>
         </block>
     </view>
+
 </view>
